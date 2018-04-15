@@ -1,5 +1,6 @@
 package com.lekmiti.users.domain;
 
+import com.lekmiti.users.dtos.UserDto;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -33,5 +34,14 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    // todo: to be refactored using an automatic mapper
+    public UserDto mapToDto(){
+        UserDto userDto = new UserDto();
+        userDto.setFirstName(this.firstName);
+        userDto.setLastName(this.lastName);
+        userDto.setUserName(this.password);
+        return userDto;
     }
 }
