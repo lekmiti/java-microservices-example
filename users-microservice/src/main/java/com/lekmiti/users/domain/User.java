@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
+// todo: see why lombok's annotations do not work
 @Data
 @ToString
 @Getter
@@ -41,7 +41,7 @@ public class User {
         UserDto userDto = new UserDto();
         userDto.setFirstName(this.firstName);
         userDto.setLastName(this.lastName);
-        userDto.setUserName(this.password);
+        userDto.setMail(this.password);
         return userDto;
     }
 }

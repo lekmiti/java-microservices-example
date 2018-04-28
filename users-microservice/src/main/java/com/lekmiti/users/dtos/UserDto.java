@@ -1,6 +1,5 @@
 package com.lekmiti.users.dtos;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
@@ -8,18 +7,17 @@ import lombok.experimental.Accessors;
 @Data
 @ToString
 @Accessors
-@AllArgsConstructor
-public class UserDto {
-        private String userName;
+ public class UserDto {
+        private String mail;
         private String firstName;
         private String lastName;
 
-        public String getUserName() {
-                return userName;
+        public String getMail() {
+                return mail;
         }
 
-        public void setUserName(String userName) {
-                this.userName = userName;
+        public void setMail(String mail) {
+                this.mail = mail;
         }
 
         public String getFirstName() {
@@ -39,5 +37,11 @@ public class UserDto {
         }
 
         public UserDto() {
+        }
+
+        public UserDto(String userName, String firstName, String lastName) {
+                this.mail = userName;
+                this.firstName = firstName;
+                this.lastName = lastName;
         }
 }
