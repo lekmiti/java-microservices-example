@@ -8,9 +8,19 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>users</artifactId>
+
+    <properties>
+        <!--db-->
+        <liquibase-core.version>3.6.1</liquibase-core.version>
+        <!--plugins-->
+        <liquibase-maven-plugin.version>3.4.1</liquibase-maven-plugin.version>
+
+    </properties>
+
     <dependencies>
+
+        <!--db-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -19,7 +29,18 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>${liquibase-maven-plugin.version}</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
@@ -27,7 +48,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase-maven-plugin.version}</version>
+                <configuration>
+                    <propertyFile>src/main/resources/config/liquibase.properties</propertyFile>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
 
 </project>

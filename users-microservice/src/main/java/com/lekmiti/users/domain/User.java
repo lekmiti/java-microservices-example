@@ -3,10 +3,9 @@ package com.lekmiti.users.domain;
 import com.lekmiti.users.dtos.UserDto;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 // todo: see why lombok's annotations do not work
 @Data
@@ -14,14 +13,29 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @AllArgsConstructor
-@Entity
+@Entity(name = "dsqd")
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
     private Long id;
+
+    @NotNull
+    @Size(max = 100)
     private String mail;
+
+    @NotNull
+    @Size(max = 100)
+
     private String password;
+
+    @Column(name = "first_name")
+    @Size(max = 50)
     private String firstName;
+
+    @Column(name = "last_name")
+    @Size(max = 50)
     private String lastName;
 
 

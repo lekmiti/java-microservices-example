@@ -20,34 +20,4 @@ public class UserApplication {
 
     }
 
-    @Bean
-    public CommandLineRunner demo(UserRepository repository) {
-        return (args) -> {
-            // save a couple of customers
-            repository.save(new User("mail1", "password1", "Jack", "Bauer"));
-            repository.save(new User("mail2", "password1", "Chloe", "O'Brian"));
-            repository.save(new User("mail3", "password1", "Kim", "Bauer"));
-
-// fetch all customers
-            log.info("Customers found with findAll():");
-            log.info("-------------------------------");
-            for (User user : repository.findAll()) {
-                log.info(user.toString());
-            }
-            log.info("");
-
-            // fetch an individual customer by ID
-            repository.findById(1L)
-                    .ifPresent(customer -> {
-                        log.info("Customer found with findById(1L):");
-                        log.info("--------------------------------");
-                        log.info(customer.toString());
-                        log.info("");
-                    });
-
-
-        };
-    }
-
-
 }
